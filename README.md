@@ -6,6 +6,25 @@ artifacts so they can be used elsewhere.
 
 This project is based on the [phpbrew](https://github.com/phpbrew/phpbrew) and some other good work done over [here](https://github.com/GM-Alex/docker-phpapp) by GM-Alex.
 
+## Known Limitations
+
+* This currently only produces Debian compatible versions, however it wouldn't be too hard to adapt this project for other things.
+* Wherever you end up using these you should make sure you use [phpbrew](https://github.com/phpbrew/phpbrew)
+* You may also have to install some libraries on the target container as well depending on how you brew.
+
+## Our builds
+
+We've built the following versions PHP for you to use
+
+* 5.3.29
+* 5.4.36
+* 5.5.20
+* 5.6.4
+
+You can grab them over in the [releases](https://github.com/kalabox/phpbrewer/releases). We actually are using these as the basis of our [Kalabox](http://github.com/kalabox/kalabox) php-appserver.
+
+*If you want be brew on your own please continue to read!*
+
 ## Basic Install & Usage
 
 You will need [docker](http://docker.io).
