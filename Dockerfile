@@ -32,7 +32,7 @@ RUN \
   rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 RUN \
-  apt-get install -y php5-xdebug php-apc
+  apt-get install -y php5-xdebug php-apc libpcre3-dev
 
 # Add files
 COPY build.sh /usr/bin/build

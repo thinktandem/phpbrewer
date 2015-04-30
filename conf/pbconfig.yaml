@@ -1,5 +1,5 @@
 variants:
-  kbox:
+  brewme:
     intl:
     cgi:
     bcmath:
@@ -22,6 +22,8 @@ variants:
     mbstring:
     mhash:
     mcrypt:
+    openssl:
+    opcache:
     pcntl:
     pcre:
     pdo:
@@ -37,9 +39,8 @@ variants:
     fpm:
     soap:
 extensions:
-  kbox:
+  brewme:
+    apc: 3.1.13
     gd: stable
-    redis: stable
-    xdebug: stable
-    APC: stable
-
+    xdebug: 2.2.1
+    redis: 2.2.5

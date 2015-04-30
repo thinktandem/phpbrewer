@@ -7,5 +7,5 @@ do
   /usr/bin/install_php $i
 done
 
-# Tar our versions and cat out
+# Tar our versions
 tar -czvf /build/php.tar.gz -C /root/.phpbrew .

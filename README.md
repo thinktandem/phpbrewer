@@ -1,29 +1,94 @@
-# PHPBREWER
+# Das PHP Brewer
 
-This thing builds PHP versions from source so you can use them elsewhere
+This is a factory to build and then tar arbitrary and multiple versions of PHP. The original and intended usecase here
+was to be able to run multiple versions of PHP side by side and have those versions be WTF and also for these versions to occupy
+the minimal amount of space. For that reason this factory spits out compiled versions without their build dependencies or unneeded
+artifacts so they can be used else where.
 
-## Install
+This project is based on the [phpbrew](https://github.com/phpbrew/phpbrew) project and some work done over here by [GM-Alex](https://github.com/GM-Alex/docker-phpapp)
 
-`docker pull kalabox/phpbrewer:stable`
+## Basic Install & Usage
 
-or
+You will need docker.
 
-`docker build -t myrepo/phpbrewer:stable .`
+If you don't want to do any customizations to how your PHP is built you can just do this
 
-## Usage
+```bash
 
-`docker run --rm -v /path/to/my/appserver/dockerfile:/build kalabox/phpbrewer:stable <PHP VERSION1> <PHPVERSION2>`
-
-## Examples
+docker pull kalabox/phpbrewer:stable
+docker run --rm -v /path/on/my/host/where/i/want/the/php.tar.gz:/build kalabox/phpbrewer:stable 5.4.36 5.3.29
 
 ```
-docker run --rm -v /Users/mpirog/Dockerfiles/php-appserver:/build kalabox/phpbrewer:stable 5.3.29 5.4.36
-docker run --rm -v /Holla:/build kalabox/phpbrewer:stable 5.5.4
+
+You will need the volume otherwise your build will be stuck inside the container. If you are using boot2docker please remember that the "host"
+in this case is the boot2docker VM which means you will need the first part of the volume to be somewhere in `\Users` on *nix or `\c\users` on DOZE.
+
+The docker run command can take any number of php versions as arguments.
+
+## Custom Install and Usage
+
+If you want customize your php build you will want to do something more like this.
+
+```bash
+
+git clone https://github.com/kalabox/phpbrewer.git
+cd phpbrewer
+nano/vi/edit conf/pbconfig.yaml
+docker build -t sometag .
+docker run --rm -v /path/to/my/appserver/dockerfile:/build sometag 5.6.4
+
 ```
 
-## Customize your build
+The default config is this:
 
-Edit the `conf/pbconfig.yaml` file and then build the dockerfile instead of pulling it.
+```yaml
+variants:
+  brewme:
+    intl:
+    cgi:
+    bcmath:
+    bz2:
+    calendar:
+    cli:
+    ctype:
+    dba:
+    dom:
+    exif:
+    fileinfo:
+    filter:
+    ftp:
+    gettext:
+    iconv:
+    intl:
+    ipc:
+    json:
+    mbregex:
+    mbstring:
+    mhash:
+    mcrypt:
+    openssl:
+    opcache:
+    pcntl:
+    pcre:
+    pdo:
+    phar:
+    posix:
+    readline:
+    sockets:
+    tokenizer:
+    xml:
+    curl:
+    zip:
+    iconv:
+    fpm:
+    soap:
+extensions:
+  brewme:
+    apc: 3.1.13
+    gd: stable
+    xdebug: 2.2.1
+    redis: 2.2.5
+```
 
 ## Other Resources
 
