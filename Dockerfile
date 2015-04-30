@@ -31,6 +31,9 @@ RUN \
   apt-get autoremove -y && \
   rm -rf /var/lib/{apt,dpkg,cache,log}/
 
+RUN \
+  apt-get install -y php5-xdebug php-apc
+
 # Add files
 COPY build.sh /usr/bin/build
 COPY conf/pbconfig.yaml /root/config.yaml

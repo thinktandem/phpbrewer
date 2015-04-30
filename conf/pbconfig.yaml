@@ -39,7 +39,7 @@ variants:
 extensions:
   kbox:
     gd: stable
-    xdebug: stable
     redis: stable
-    APC:
+    xdebug: stable
+    APC: stable
 
