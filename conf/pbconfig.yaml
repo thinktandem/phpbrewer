@@ -1,0 +1,45 @@
+variants:
+  kbox:
+    intl:
+    cgi:
+    bcmath:
+    bz2:
+    calendar:
+    cli:
+    ctype:
+    dba:
+    dom:
+    exif:
+    fileinfo:
+    filter:
+    ftp:
+    gettext:
+    iconv:
+    intl:
+    ipc:
+    json:
+    mbregex:
+    mbstring:
+    mhash:
+    mcrypt:
+    pcntl:
+    pcre:
+    pdo:
+    phar:
+    posix:
+    readline:
+    sockets:
+    tokenizer:
+    xml:
+    curl:
+    zip:
+    iconv:
+    fpm:
+    soap:
+extensions:
+  kbox:
+    gd: stable
+    apc: stable
+    xdebug: stable
+    redis: stable
+

@@ -1,0 +1,28 @@
+#!/bin/bash
+PHP_VERSION="${1}"
+
+if [[ ${1} =~ ([0-9]+\.[0-9]+)\.[0-9]+ ]]; then
+  PHP_SHORT_VERSION=${BASH_REMATCH[1]}
+else
+  echo "Wrong version number given"
+  exit 1
+fi
+
+PHPBREW_PATH="/root/.phpbrew/"
+PHPBREW_PHP_PATH="${PHPBREW_PATH}php/php-${1}/"
+
+#+openssl-- --enable-wddx +opcache
+phpbrew -d install ${PHP_VERSION} +kbox +dbs -- --enable-fpm --with-fpm-user=root --with-fpm-group=root --with-gd=shared --enable-gd-native-ttf --with-jpeg-dir=/usr --with-png-dir=/usr
+source /root/.phpbrew/bashrc
+phpbrew -d switch php-${PHP_VERSION}
+
+# Load extensions
+phpbrew -d ext install +kbox -- --with-gd=shared --enable-gd-native-ttf --with-jpeg-dir=/usr --with-png-dir=/usr
+
+#not yet
+phpbrew clean ${PHP_VERSION}
+rm -R /root/.phpbrew/build/php-${PHP_VERSION}
+rm -R /root/.phpbrew/distfiles/*
+
+# reset for the next
+phpbrew off
