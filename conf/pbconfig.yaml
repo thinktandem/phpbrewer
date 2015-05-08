@@ -40,7 +40,7 @@ variants:
     soap:
 extensions:
   brewme:
-    apc: 3.1.13
     gd: stable
-    xdebug: 2.2.1
     redis: 2.2.5
+
+

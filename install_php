@@ -11,18 +11,26 @@ fi
 PHPBREW_PATH="/root/.phpbrew/"
 PHPBREW_PHP_PATH="${PHPBREW_PATH}php/php-${1}/"
 
-#+openssl-- --enable-wddx +opcache
+#+openssl-- --enable-wddx
 phpbrew -d install ${PHP_VERSION} +brewme +dbs -- --enable-fpm --with-fpm-user=root --with-fpm-group=root --with-gd=shared --enable-gd-native-ttf --with-jpeg-dir=/usr --with-png-dir=/usr
 source /root/.phpbrew/bashrc
 phpbrew -d switch php-${PHP_VERSION}
 
-# Load extensions
 phpbrew -d ext install +brewme -- --with-gd=shared --enable-gd-native-ttf --with-jpeg-dir=/usr --with-png-dir=/usr
+phpbrew -d ext install xdebug 2.2.5
 
-#not yet
+# Load version specific extensions
+if [[ ${PHP_SHORT_VERSION} == '5.3' || $PHP_SHORT_VERSION == '5.4' ]]; then
+  phpbrew -d ext install apc 3.1.13
+fi
+
+if [[ ${PHP_SHORT_VERSION} == '5.5' || $PHP_SHORT_VERSION == '5.6' ]]; then
+  phpbrew -d ext install opcache stable
+fi
+
 phpbrew clean ${PHP_VERSION}
 rm -R /root/.phpbrew/build/php-${PHP_VERSION}
-rm -R /root/.phpbrew/distfiles/*
+rm -R /root/.phpbrew/distfiles
+rm -R /root/.phpbrew/tmp
 
-# reset for the next
 phpbrew off

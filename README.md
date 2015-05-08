@@ -17,11 +17,10 @@ This project is based on the [phpbrew](https://github.com/phpbrew/phpbrew) and s
 We've built the following versions PHP for you to use
 
 * 5.3.29
-* 5.4.36
-* 5.5.20
-* 5.6.4
+* 5.4.40
+* 5.5.24
 
-You can grab them over in the [releases](https://github.com/kalabox/phpbrewer/releases). We actually are using these as the basis of our [Kalabox](http://github.com/kalabox/kalabox) php-appserver.
+You can grab them and previus builds over in the [releases](https://github.com/kalabox/phpbrewer/releases). We actually are using these as the basis of our [Kalabox](http://github.com/kalabox/kalabox) php-appserver.
 
 *If you want be brew on your own please continue to read!*
 
@@ -101,9 +100,7 @@ variants:
     soap:
 extensions:
   brewme:
-    apc: 3.1.13
     gd: stable
-    xdebug: 2.2.1
     redis: 2.2.5
 ```
 
