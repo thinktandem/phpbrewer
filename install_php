@@ -17,15 +17,16 @@ source /root/.phpbrew/bashrc
 phpbrew -d switch php-${PHP_VERSION}
 
 phpbrew -d ext install +brewme -- --with-gd=shared --enable-gd-native-ttf --with-jpeg-dir=/usr --with-png-dir=/usr
-phpbrew -d ext install xdebug 2.2.5
 
 # Load version specific extensions
 if [[ ${PHP_SHORT_VERSION} == '5.3' || $PHP_SHORT_VERSION == '5.4' ]]; then
   phpbrew -d ext install apc 3.1.13
+  phpbrew -d ext install xdebug 2.2.5
 fi
 
 if [[ ${PHP_SHORT_VERSION} == '5.5' || $PHP_SHORT_VERSION == '5.6' ]]; then
   phpbrew -d ext install opcache stable
+  phpbrew -d ext install apcu 4.0.7
 fi
 
 phpbrew clean ${PHP_VERSION}
