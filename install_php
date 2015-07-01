@@ -28,6 +28,7 @@ if [[ ${PHP_SHORT_VERSION} == '5.5' || $PHP_SHORT_VERSION == '5.6' ]]; then
   phpbrew -d ext install opcache stable
   phpbrew -d ext install apcu 4.0.7
 fi
+phpbrew -d ext install imagick 3.1.2
 
 phpbrew clean ${PHP_VERSION}
 rm -R /root/.phpbrew/build/php-${PHP_VERSION}

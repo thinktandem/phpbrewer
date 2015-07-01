@@ -14,6 +14,7 @@ RUN \
   apt-get build-dep -y php5 && \
   apt-get install -y php5 php5-dev php5-cli && \
   apt-get install -y autoconf automake curl build-essential libxslt1-dev re2c libxml2 && \
+  apt-get install -y libmagickwand-dev libmagickcore-dev && \
   apt-get install -y libxml2-dev bison libbz2-dev libreadline-dev libfreetype6 libfreetype6-dev libpng12-0 && \
   apt-get install -y libpng12-dev libjpeg-dev libjpeg8-dev libjpeg8 libgd2-xpm-dev libxpm4 libltdl7 libltdl-dev && \
   apt-get install -y libssl-dev openssl && \
