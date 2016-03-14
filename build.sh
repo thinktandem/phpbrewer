@@ -8,4 +8,5 @@ do
 done
 
 # Tar our versions
+mkdir -p /build
 tar -czvf /build/php.tar.gz -C /root/.phpbrew .

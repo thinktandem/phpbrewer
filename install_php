@@ -8,11 +8,13 @@ else
   exit 1
 fi
 
+phpbrew known
+
 PHPBREW_PATH="/root/.phpbrew/"
 PHPBREW_PHP_PATH="${PHPBREW_PATH}php/php-${1}/"
 
 #+openssl-- --enable-wddx
-phpbrew -d install ${PHP_VERSION} +brewme +dbs -- --enable-fpm --with-fpm-user=root --with-fpm-group=root --with-gd=shared --enable-gd-native-ttf --with-jpeg-dir=/usr --with-png-dir=/usr
+phpbrew -d install ${PHP_VERSION} +brewme +dbs -- --enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data --with-gd=shared --enable-gd-native-ttf --with-jpeg-dir=/usr --with-png-dir=/usr
 source /root/.phpbrew/bashrc
 phpbrew -d switch php-${PHP_VERSION}
 
